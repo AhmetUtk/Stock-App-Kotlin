@@ -59,9 +59,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+
     implementation(libs.hilt.android.v244)
     kapt(libs.hilt.android.compiler)
 
+    implementation(libs.opencsv)
     val room_version = "2.6.1"
 
     implementation(libs.room)
@@ -83,6 +85,7 @@ dependencies {
     kapt(libs.androidx.lifecycle.compiler)
     // login intercept
     implementation(libs.logging.interceptor)
+
 
 
     testImplementation(libs.junit)

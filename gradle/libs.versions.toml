@@ -51,6 +51,8 @@ logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", ver
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 room  = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 
+opencsv = { group = "com.opencsv", name = "opencsv", version = "5.5.2" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
