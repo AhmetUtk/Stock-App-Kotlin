@@ -1,6 +1,5 @@
 package com.example.myapplication.domain.repostory
 
-import androidx.room.Query
 import com.example.myapplication.domain.model.CompanyInfo
 import com.example.myapplication.domain.model.CompanyListing
 import com.example.myapplication.domain.model.IntradayInfo
@@ -9,10 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface StockRepository {
 
-    suspend fun getCompanyListings(
-        fetchFromRemote: Boolean,
-        query: String
-    ): Flow<Resource<List<CompanyListing>>>
 
     suspend fun getIntradayInfo(
         symbol: String
@@ -21,4 +16,9 @@ interface StockRepository {
     suspend fun getCompanyInfo(
         symbol: String
     ): Resource<CompanyInfo>
+
+    suspend fun getCompanyListing(
+        fetchFromRemote: Boolean,
+        query: String
+    ): Flow<Resource<List<CompanyListing>>>
 }
