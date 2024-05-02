@@ -6,7 +6,9 @@ import com.example.myapplication.data.local.StockDatabase
 import com.example.myapplication.data.mapper.toCompanyListing
 import com.example.myapplication.data.mapper.toCompanyListingEntitiy
 import com.example.myapplication.data.remote.StockApi
+import com.example.myapplication.domain.model.CompanyInfo
 import com.example.myapplication.domain.model.CompanyListing
+import com.example.myapplication.domain.model.IntradayInfo
 import com.example.myapplication.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -19,9 +21,11 @@ class StockRepositoryImpl @Inject constructor(
     val api : StockApi,
     val db : StockDatabase,
     private val companyListingsParser: CSVParser<CompanyListing>,
+    private val intradayInfoParser: CSVParser<IntradayInfo>,
 
-    ):StockRepository {
+    ): StockRepository {
     private val dao = db.dao
+    
     override suspend fun getCompanyListing(
         fetchFromRemote: Boolean,
         query: String
@@ -42,6 +46,7 @@ class StockRepositoryImpl @Inject constructor(
             val remoteListings = try {
                 val response = api.getListings()
                 companyListingsParser.parse(response.byteStream())
+
 
             }catch (e : IOException){
                 e.printStackTrace()
@@ -67,7 +72,16 @@ class StockRepositoryImpl @Inject constructor(
                 ))
                 emit(Resource.Loading(false))
             }
+
+            }
         }
+
+    override suspend fun getIntradayInfo(symbol: String): Resource<List<IntradayInfo>> {
+        TODO("Not yet implemented")
     }
 
+    override suspend fun getCompanyInfo(symbol: String): Resource<CompanyInfo> {
+        TODO("Not yet implemented")
+    }
 }
+
