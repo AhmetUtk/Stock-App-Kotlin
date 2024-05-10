@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("kapt")
+    id("com.google.devtools.ksp")
+
     id("com.google.dagger.hilt.android")
 }
 
@@ -86,6 +88,18 @@ dependencies {
     // login intercept
     implementation(libs.logging.interceptor)
 
+    implementation(libs.moshi)
+    implementation(libs.retrofitConverterWire)
+
+    implementation("com.squareup.moshi:moshi:1.14.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+
+    implementation ("io.github.raamcosta.compose-destinations:core:1.1.2-beta")
+    ksp ("io.github.raamcosta.compose-destinations:ksp:1.1.2-beta")
+
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    implementation ("com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha")
 
 
     testImplementation(libs.junit)
